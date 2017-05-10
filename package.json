@@ -9,6 +9,15 @@
     "type": "git",
     "url": "git+https://github.com/lopl233/BackEndProject.git"
   },
+  "dependencies": {
+    "body-parser": ">=1.13.2",
+    "ejs": ">=2.3.3",
+    "express": ">=4.15.2",
+    "express-session": "^1.15.2",
+    "morgan": ">=1.6.1",
+    "pug": "^2.0.0-beta.12",
+    "shortid": "^2.2.8"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
