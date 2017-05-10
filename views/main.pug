@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    include logout
+    if role === "user"
+        a.btn.btn-primary(href = "/user") USER
+    else
+        a.btn.btn-primary(href = "/user") USER
+        a.btn.btn-primary(href = "/admin") ADMIN
+
+

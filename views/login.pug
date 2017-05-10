@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    h1 Log In
+    if !flag
+        h2 Invalid login or password
+
+    form(method='POST' action='/login')
+        div.form-group
+            label(for='login') Login
+            input.form-control(type='text' id='login' placeholder='login' name='login')
+        div.form-group
+            label(for='password') Password
+            input.form-control(type='password' id='password' placeholder='password' name='password')
+        button.btn.btn-primary(type='submit') Log in
+    a.btn.btn-primary(href = "/register") Register

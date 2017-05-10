@@ -1,0 +1,6 @@
+{
+  "unauthorized": ["login","register", "accountCreated"],
+  "user": ["login", "main", "user", "register"],
+  "admin": ["login", "main", "user", "admin", "register"],
+  "all_paths":["login", "main", "user", "admin", "register", "accountCreated", "404", "403", "401"]
+}

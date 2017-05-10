@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    include logout
+    a.btn.btn-primary(href = "/main") Main Page
+    h1 ADMIN PAGE
+
+    - var values = users;
+    ul
+        each val in values.length ? values : ['There are no values']
+            li= val

@@ -1,0 +1,19 @@
+extends layout
+
+block content
+    h1 Register
+    h2= message
+    form(method='POST' action='/register')
+        div.form-group
+            label(for='login') Login
+            input.form-control(type='text' id='login' placeholder='login' name='login')
+        div.form-group
+            label(for='password') Password
+            input.form-control(type='password' id='password' placeholder='password' name='password')
+        div.form-group
+            label(for='rpassword') Repeat Password
+            input.form-control(type='password' id='rpassword' placeholder='password' name='rpassword')
+        div.form-group
+            label(for='admin') Admin Account
+            input(type='checkbox' id='admin' name='admin')
+        button.btn.btn-primary(type='submit') Register
