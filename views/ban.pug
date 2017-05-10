@@ -1,0 +1,13 @@
+extends layout
+
+block content
+    h1 Ban
+    form(method='POST' action='/ban')
+        div.form-group
+            label(for='login') Login
+            input.form-control(type='text' id='login' placeholder='login' name='login')
+        div.form-group
+            label(for='time') Time being banned
+            input.form-control(type='text' id='time' placeholder='time' name='time')
+        button.btn.btn-primary(type='submit') BAN!
+

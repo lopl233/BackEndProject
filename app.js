@@ -9,6 +9,7 @@ var  md5 = require('md5');
 var users = require('./Data/users.json');
 var config = require('./Data/config.json');
 var files = require('./Data/files.json');
+var bans = require('./Data/bans.json');
 
 var fs = require('fs');
 var session = require("express-session");
@@ -32,6 +33,12 @@ function writeUser() {
 
 function writeFiles() {
     fs.writeFile("./Data/files.json", JSON.stringify(files), function (err) {
+        if (err) return console.log(err);
+    });
+}
+
+function writeBans() {
+    fs.writeFile("./Data/bans.json", JSON.stringify(bans), function (err) {
         if (err) return console.log(err);
     });
 }
@@ -122,6 +129,10 @@ app.get("/upload", function (req, res) {
     res.render("upload");
 });
 
+app.get("/ban", function (req, res) {
+    res.render("ban");
+});
+
 app.post("/login", function (req, res) {
 
     sess = req.session;
@@ -206,6 +217,22 @@ app.post("/",upload.single("myFile"), function (req, res) {
 
     res.render("403")
 });
+
+
+app.post("/ban", function (req, res) {
+    var login = req.body.login;
+    var time = req.body.time;
+
+    bans[login] = Date.now() + time;
+    writeBans();
+
+
+    res.render("403")
+});
+
+
+
+
 
 app.use(function(req, res) {
     res.status(404).render("404");

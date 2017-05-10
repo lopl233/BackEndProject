@@ -1,6 +1,6 @@
 {
   "unauthorized": ["login","register", "accountCreated","upload"],
   "user": ["login", "main", "user", "register","upload"],
-  "admin": ["login", "main", "user", "admin", "register","upload"],
-  "all_paths":["login", "main", "user", "admin", "register", "accountCreated","upload", "404", "403", "401"]
+  "admin": ["login", "main", "user", "admin", "register","upload","ban"],
+  "all_paths":["login", "main", "user", "admin", "register", "accountCreated","upload","ban", "404", "403", "401"]
 }
