@@ -1,7 +1,9 @@
-extends layout
+include layout
 
 block content
     h1 Upload
     form( action="/" method= 'post' enctype="multipart/form-data")
         input(name= "myFile" type='file' class="form-control")
         button.btn.btn-primary(type='submit') Upload
+
+include logout

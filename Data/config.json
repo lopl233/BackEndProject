@@ -1,6 +1,6 @@
 {
-  "unauthorized": ["login","register", "accountCreated","upload"],
-  "user": ["login", "main", "user", "register","upload"],
-  "admin": ["login", "main", "user", "admin", "register","upload","ban"],
-  "all_paths":["login", "main", "user", "admin", "register", "accountCreated","upload","ban", "404", "403", "401"]
+  "unauthorized": ["login","register", "accountCreated","upload","AccountBanned"],
+  "user": ["login", "main", "user", "register","upload","wrongFormat"],
+  "admin": ["login", "main", "user", "admin", "register","upload","ban","wrongFormat"],
+  "all_paths":["login", "main", "user", "admin", "register", "accountCreated","upload","ban","AccountBanned","wrongFormat", "404", "403", "401"]
 }

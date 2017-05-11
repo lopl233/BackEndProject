@@ -1,11 +1,16 @@
-extends layout
+include layout
 
 block content
-    include logout
-    if role === "user"
-        a.btn.btn-primary(href = "/user") USER
-    else
-        a.btn.btn-primary(href = "/user") USER
-        a.btn.btn-primary(href = "/admin") ADMIN
+    a.btn.btn-primary(href = "/upload") UPLOAD PHOTO
+
+block content
+     if role === "user"
+         a.btn.btn-primary(href = "/user") USER
+     else
+         a.btn.btn-primary(href = "/user") USER
+         a.btn.btn-primary(href = "/admin") ADMIN
+
+include logout
+
 
 

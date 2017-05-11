@@ -133,6 +133,32 @@ app.get("/ban", function (req, res) {
     res.render("ban");
 });
 
+app.get("/uploadedFile", function (req, res) {
+    res.render("uploadedFile");
+});
+
+app.get("/AccountBanned", function (req, res) {
+    res.render("AccountBanned");
+});
+
+app.get("/wrongFormat", function (req, res) {
+    res.render("wrongFormat");
+});
+
+app.get("/admin", function(req, res) {
+    sess = req.session;
+
+    app.locals.users = [];
+    for (var i in users) {
+        var person = i;
+        var role = users[i].role;
+        var string = person + " role: " + role;
+
+        app.locals.users.push(string);
+    }
+    res.render("admin");
+});
+
 app.post("/login", function (req, res) {
 
     sess = req.session;
@@ -143,6 +169,7 @@ app.post("/login", function (req, res) {
 
     if(users[login]){
         if(users[login].password === hashpasswd) {
+            if(bans[login]>Date.now()){res.redirect("/AccountBanned");return;}
             sess.login = login;
             sess.password = hashpasswd;
             sess.role = users[login].role;
@@ -201,6 +228,14 @@ app.post("/logout", function (req, res) {
 app.post("/",upload.single("myFile"), function (req, res) {
     var myFile = req.file;
 
+    if(myFile.originalname.indexOf("jpeg") < 0  &&myFile.originalname.indexOf("jpg") < 0) {
+        res.redirect("/wrongFormat")
+        var filePath = 'uploads/'+myFile.filename;
+        fs.unlinkSync(filePath);
+        return;
+
+    }
+
     var arr = users[req.session.login].file_list
     arr.push(myFile.filename)
     users[req.session.login].file_list = arr;
@@ -215,7 +250,7 @@ app.post("/",upload.single("myFile"), function (req, res) {
     writeUser();
     writeFiles();
 
-    res.render("403")
+    res.redirect("/uploadedFile")
 });
 
 
@@ -226,8 +261,7 @@ app.post("/ban", function (req, res) {
     bans[login] = Date.now() + time;
     writeBans();
 
-
-    res.render("403")
+    res.render("ban")
 });
 
 
